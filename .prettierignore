@@ -1,0 +1,17 @@
+node_modules
+package.json
+img
+artifacts
+cache
+.env
+coverage
+.*
+README.md
+coverage.json
+typechain
+typechain-types
+
+# Hardhat files
+cache
+artifacts
+
