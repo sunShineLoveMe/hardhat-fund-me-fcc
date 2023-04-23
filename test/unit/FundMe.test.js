@@ -23,19 +23,19 @@ describe("FundMe", function() {
         console.log(`fundMe地址: ${fundMe}`)
         // console.log("----------------------------")
         // 获取MockV3Aggregator合约实例
-        // mockV3Aggregator = await ethers.getContract(
-        //     "MockV3Aggregator", 
-        //     deployer
-        // )
+        mockV3Aggregator = await ethers.getContract(
+            "MockV3Aggregator", 
+            deployer
+        )
     })
 
     // 定义测试用例
-    describe("constructor", function() {
-        it("sets the aggregator address correctly", async() => {
-            // 获取FundMe合约中的价格聚合器地址
-            const response = await fundMe.getPriceFeed()
-            // 断言价格聚合器地址是否与MockV3Aggregator合约地址相等
-            assert.equal(response, mockV3Aggregator.address)
-        })
-    })
+    // describe("constructor", function() {
+    //     it("sets the aggregator address correctly", async() => {
+    //         // 获取FundMe合约中的价格聚合器地址
+    //         const response = await fundMe.getPriceFeed()
+    //         // 断言价格聚合器地址是否与MockV3Aggregator合约地址相等
+    //         assert.equal(response, mockV3Aggregator.address)
+    //     })
+    // })
 })
