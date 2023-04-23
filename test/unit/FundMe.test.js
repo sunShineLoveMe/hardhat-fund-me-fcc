@@ -14,6 +14,7 @@ describe("FundMe", function() {
         // 获取部署者地址
         deployer = (await getNamedAccounts()).deployer
         console.log("deployer: ", deployer)
+        console.log(deployments)
         // 部署所有合约
         await deployments.fixture(["all"])
         console.log("-------------*****---------------")
@@ -22,10 +23,10 @@ describe("FundMe", function() {
         console.log(`fundMe地址: ${fundMe}`)
         // console.log("----------------------------")
         // 获取MockV3Aggregator合约实例
-        mockV3Aggregator = await ethers.getContract(
-            "MockV3Aggregator", 
-            deployer
-        )
+        // mockV3Aggregator = await ethers.getContract(
+        //     "MockV3Aggregator", 
+        //     deployer
+        // )
     })
 
     // 定义测试用例
