@@ -6,6 +6,12 @@ require("solidity-coverage")
 require("hardhat-deploy")
 
 /** @type import('hardhat/config').HardhatUserConfig */
+
+const ALCHEMY_API_URL = process.env.ALCHEMY_API_URL
+const PRIVATE_KEY = process.env.PRIVATE_KEY
+const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY
+
 module.exports = {
   solidity: {
     compilers: [
@@ -23,17 +29,22 @@ module.exports = {
       chainId: 31337
     },
     sepolia: {
-      url: process.env.ALCHEMY_API_URL,
-      accounts: [process.env.PRIVATE_KEY],
-      chainId: 11155111
+      url: ALCHEMY_API_URL,
+      accounts: [PRIVATE_KEY],
+      chainId: 11155111,
+      blockConfirmations: 6
     }
   },
   gasReporter: {
-    enabled: process.env.REPORT_GAS !== undefined,
+    enabled: false,
+    outputFile: "gas-report.txt",
+    noColor: true,
     currency: 'USD',
+    coinmarketcap: COINMARKETCAP_API_KEY,
+    token: "MATIC"
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY
+    apiKey: ETHERSCAN_API_KEY
   },
   namedAccounts: {
     deployer: {

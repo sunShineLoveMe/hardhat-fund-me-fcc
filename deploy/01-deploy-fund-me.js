@@ -1,5 +1,6 @@
 const { network } = require("hardhat");
 const { networkConfig, developmentChain } = require("../helper-hardhat-config")
+const { verify } = require("../utils/verify")
 
 /**
  * @ deployer: 部署合约的账户
@@ -19,11 +20,17 @@ module.exports = async({ getNamedAccounts, deployments }) => {
         ethUsdPriceFeedAddress = networkConfig[chainId]["ethUsdPriceFeed"]
     }
 
+    const args = [ethUsdPriceFeedAddress]
     const fundMe = await deploy("FundMe", {
         from: deployer,
-        args: [ethUsdPriceFeedAddress],
-        log: true
+        args: args,
+        log: true,
+        waitConfirmations: network.config.blockConfirmations || 1,
     })
+
+    if(!developmentChain.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
+        await verify(fundMe.address, args)
+    }
     log("----------------------------")
 }
 
