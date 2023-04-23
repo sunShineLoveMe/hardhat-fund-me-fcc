@@ -8,7 +8,9 @@ require("hardhat-deploy")
 /** @type import('hardhat/config').HardhatUserConfig */
 
 const ALCHEMY_API_URL = process.env.ALCHEMY_API_URL
+// console.log(`ALCHEMY_API_URL: ${ALCHEMY_API_URL}`)
 const PRIVATE_KEY = process.env.PRIVATE_KEY
+// console.log(`PRIVATE_KEY: ${PRIVATE_KEY}`)
 const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY
 
@@ -48,7 +50,8 @@ module.exports = {
   },
   namedAccounts: {
     deployer: {
-      default: 0
+      default: 0,
+      1: 0
     },
     user: {
       default: 1
