@@ -14,7 +14,6 @@ describe("FundMe", function() {
         // 获取部署者地址
         deployer = (await getNamedAccounts()).deployer
         console.log("deployer: ", deployer)
-        console.log(deployments)
         // 部署所有合约
         await deployments.fixture(["all"])
         console.log("-------------*****---------------")
@@ -29,13 +28,20 @@ describe("FundMe", function() {
         )
     })
 
-    // 定义测试用例
-    // describe("constructor", function() {
-    //     it("sets the aggregator address correctly", async() => {
-    //         // 获取FundMe合约中的价格聚合器地址
-    //         const response = await fundMe.getPriceFeed()
-    //         // 断言价格聚合器地址是否与MockV3Aggregator合约地址相等
-    //         assert.equal(response, mockV3Aggregator.address)
+    // describe("fund", async function() {
+    //     it("Fails if you dont send enough ETH", async() => {
+    //         await expect(fundMe.fund()).to.be.revertedWith(
+    //             "You need to send more ETH!")
     //     })
     // })
+
+    // 定义测试用例
+    describe("constructor", function() {
+        it("sets the aggregator address correctly", async() => {
+            // 获取FundMe合约中的价格聚合器地址
+            const response = await fundMe.getPriceFeed()
+            // 断言价格聚合器地址是否与MockV3Aggregator合约地址相等
+            assert.equal(response, mockV3Aggregator.address)
+        })
+    })
 })

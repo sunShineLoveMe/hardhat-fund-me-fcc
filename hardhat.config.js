@@ -57,3 +57,32 @@ module.exports = {
     }
   }
 };
+
+// module.exports = {
+//   defaultNetwork: "hardhat",
+//   networks: {
+//     hardhat: {
+//       chainId: 31337
+//     }
+//   },
+//   solidity: {
+//     compilers: [
+//       { 
+//         version: "0.8.8" 
+//       }, 
+//       { 
+//         version: "0.6.6" 
+//       }
+//     ]
+//   },
+//   /**
+//    * 这是一个键值对，用于将索引号 1 映射到索引号 0 上。这意味着，当使用索引号 1 时，
+//    * 实际上将使用索引号 0 对应的帐户地址。这对于确保不同网络环境下的索引号一致性非常有用
+//    */
+//   namedAccounts: {
+//     deployer: {
+//       default: 0,
+//       1: 0
+//     }
+//   }
+// };
